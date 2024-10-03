@@ -16,7 +16,9 @@ jobs:
         with:
           node-version: 20
       - run: npm ci   
-#      - run: npm test
+      - run: |
+          git config --global user.name "Bhuvanesh Duvvuri"
+          git config --global user.email "realbhuvaneshduvvuri@gmail.com"
 
   publish-npm:
     needs: build
