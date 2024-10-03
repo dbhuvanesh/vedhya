@@ -17,14 +17,14 @@ jobs:
         with:
           node-version: 20  # Adjust based on your project requirements
       - name: Install dependencies
-        run: npm install  # Consider using npm ci for subsequent runs
+      -  run: npm install  # Consider using npm ci for subsequent runs
       - run: |
           if [[ $(git describe --tags --abbrev=0) != "" ]]; then
             echo "Skipping version update - tagged commit detected."
           else
             npm version patch  # Adjust type for major/minor updates
           fi
-      - run: npm adduser    
+      - run: npm ci
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.WORKFLOW }}  # Use a secret for token
