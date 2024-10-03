@@ -12,21 +12,11 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install dependencies
         run: npm install
-      - name: Update version (if desired)
+              - name: Configure Git
         run: |
-          if [[ $(git describe --tags --abbrev=0) != "" ]]; then
-            echo "Skipping version update - tagged commit detected."
-          else
-            npm version patch  # Adjust type for major/minor updates
-          fi
-      - name: Login to npm
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: false  # Avoid storing credentials
-      - name: Publish to npm (if version updated)
-        run: |
-          if [[ -z ${{ steps.update_version.outputs.stdout }} ]]; then
-            echo "Skipping publish - version not updated."
-          else
-            npm publish
-          fi
+          git config --global user.name "Bhuvanesh Duvvuri"
+          git config --global user.email "realbhuvaneshduvvuri@gmail.com"  
+          
+      -run:   npm publish
+      env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
