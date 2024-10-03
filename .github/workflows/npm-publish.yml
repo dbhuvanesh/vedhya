@@ -15,12 +15,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci      
-      - run: npm version patch
-#      - run: npm test
+      - run: npm ci   
       - run: |
           git config --global user.name "Bhuvanesh Duvvuri"
           git config --global user.email "realbhuvaneshduvvuri@gmail.com"
+      - run: npm version patch
+#      - run: npm test
 
   publish-npm:
     needs: build
