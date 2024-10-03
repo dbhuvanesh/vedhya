@@ -29,7 +29,7 @@ jobs:
       - run: npm ci
       - run : git config --global user.email "realbhuvaneshduvvuri@gmail.com"
       - run : git config --global user.name "Bhuvanesh Duvvuri"
-      - run: npm version patch
+      - run: npm version minor
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.WORKFLOW}}
