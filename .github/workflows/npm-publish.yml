@@ -1,39 +1,30 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
-name: Node.js Package
+name: Build, Test, and Publish
 
 on:
   push:
     branches: [main]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci   
-      - run: |
+      - name: Configure Git
+        run: |
           git config --global user.name "Bhuvanesh Duvvuri"
           git config --global user.email "realbhuvaneshduvvuri@gmail.com"
-
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          registry-url: https://registry.npmjs.org/
+          node-version: 16  # Adjust based on your project requirements
+      - name: Install dependencies
+        run: npm install  # Consider using npm ci for subsequent runs
+      - run: npm test
       - run: |
-          git config --global user.name "Bhuvanesh Duvvuri"
-          git config --global user.email "realbhuvaneshduvvuri@gmail.com"
-      - run: npm ci
-      - run: npm version patch
+          if [[ $(git describe --tags --abbrev=0) != "" ]]; then
+            echo "Skipping version update - tagged commit detected."
+          else
+            npm version patch  # Adjust type for major/minor updates
+          fi
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.WORKFLOW}}
+          NODE_AUTH_TOKEN: ${{ secrets.WORKFLOW }}  # Use a secret for token
