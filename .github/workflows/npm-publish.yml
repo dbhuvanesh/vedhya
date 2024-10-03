@@ -18,6 +18,9 @@ jobs:
       - run: npm ci      
       - run: npm version patch
 #      - run: npm test
+      - run: |
+          git config --global user.name "Bhuvanesh Duvvuri"
+          git config --global user.email "realbhuvaneshduvvuri@gmail.com"
 
   publish-npm:
     needs: build
