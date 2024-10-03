@@ -1,6 +1,6 @@
 {
   "name": "vedhya",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A flexible CSS framework based on grid.",
   "scripts": {
     "update": "git add . && git commit -m 'updates' && git push && npm version patch ",
