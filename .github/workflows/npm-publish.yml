@@ -24,6 +24,7 @@ jobs:
           else
             npm version patch  # Adjust type for major/minor updates
           fi
+      - run: npm adduser    
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.WORKFLOW }}  # Use a secret for token
