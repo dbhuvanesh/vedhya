@@ -15,7 +15,7 @@ jobs:
           git config --global user.email "realbhuvaneshduvvuri@gmail.com"
       - uses: actions/setup-node@v4
         with:
-          node-version: 16  # Adjust based on your project requirements
+          node-version: 20  # Adjust based on your project requirements
       - name: Install dependencies
         run: npm install  # Consider using npm ci for subsequent runs
       - run: |
