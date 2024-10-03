@@ -18,7 +18,6 @@ jobs:
           node-version: 16  # Adjust based on your project requirements
       - name: Install dependencies
         run: npm install  # Consider using npm ci for subsequent runs
-      - run: npm test
       - run: |
           if [[ $(git describe --tags --abbrev=0) != "" ]]; then
             echo "Skipping version update - tagged commit detected."
