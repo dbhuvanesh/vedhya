@@ -15,7 +15,7 @@ You can use the package with the following commands
 When importing to .js file
 
 ```
-import "vedhya/css/medhya.min.css"
+import "vedhya/css/vedhya.min.css"
 ```
 
 When using a css file
