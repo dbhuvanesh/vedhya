@@ -1,6 +1,6 @@
 {
   "name": "vedhya",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A flexible CSS framework based on grid.",
   "scripts": {
     "build-cleancss": "cleancss -o css/vedhya.min.css css/vedhya.css",
