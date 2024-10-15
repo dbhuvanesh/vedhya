@@ -1,5 +1,5 @@
-import "vedhya/css/vedhya.css";
 import React from "react";
+import "vedhya/css/vedhya.css";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 const container = document.querySelector(".root");
