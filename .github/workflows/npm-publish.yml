@@ -28,8 +28,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm adduser
-      - run: git config --global user.email "realbhuvaneshduvvuri@gmail.com"
       - run: git config --global user.name "Bhuvanesh Duvvuri"
+      - run: git config --global user.email "duvvuribhuvanesh@zohomail.in"
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.WORKFLOW}}
